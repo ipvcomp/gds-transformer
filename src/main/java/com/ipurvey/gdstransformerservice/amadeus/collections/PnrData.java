@@ -13,19 +13,19 @@ public class PnrData extends BaseEntity {
     @Version
     private Long version;
 
-    private List<PnrInfo> pnrData;
+    private List<PnrInfo> pnrs;
 
     private ProcessingStatus processingStatus=ProcessingStatus.PENDING;
-    public PnrData(List<PnrInfo> pnrData) {
-        this.pnrData = pnrData;
+    public PnrData(List<PnrInfo> pnrs) {
+        this.pnrs = pnrs;
     }
 
-    public List<PnrInfo> getPnrData() {
-        return pnrData;
+    public List<PnrInfo> getPnrs() {
+        return pnrs;
     }
 
-    public void setPnrData(List<PnrInfo> pnrData) {
-        this.pnrData = pnrData;
+    public void setPnrs(List<PnrInfo> pnrs) {
+        this.pnrs = pnrs;
     }
 
     @Data
