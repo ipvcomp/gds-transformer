@@ -13,8 +13,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -25,20 +23,15 @@ import java.time.LocalTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingDepartureDetails {
 
-    @NotBlank(message = "airportCode must not be empty!")
-    @Column(nullable = false)
+
     private String airportCode;
 
-    @NotBlank(message = "airportName must not be empty!")
-    @Column(nullable = false)
     private String airportName;
     private String gate;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    @NotBlank(message = "dateLocal must not be empty!")
-    @Column(nullable = false)
     private LocalDate dateLocal;
 
     @JsonFormat(pattern = "HH:mm")

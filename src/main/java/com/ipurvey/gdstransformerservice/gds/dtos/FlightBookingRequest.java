@@ -12,9 +12,6 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -33,13 +30,11 @@ public class FlightBookingRequest {
 
     private FlightInfo flightInfo;
 
-    @Size(min=1, message = "There must be at least one Journey!")
-    @Valid
+
     private List<Journey> Journey;
 
     private String socketId;
 
-    @NotNull(message = "Transit flag can not be empty")
     private Boolean transit;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -54,7 +49,7 @@ public class FlightBookingRequest {
 
     private String batchNo;
 
-    @Valid
+
     private PassengerDetails passengers;
 
     private String countryCode;

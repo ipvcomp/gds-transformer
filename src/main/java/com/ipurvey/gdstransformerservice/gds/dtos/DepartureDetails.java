@@ -13,7 +13,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -28,7 +27,6 @@ public class DepartureDetails {
     @JsonFormat(pattern = "dd-MM-yyyy")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    @Column(nullable = false)
     private LocalDate dateLocal;
 
     @JsonFormat(pattern = "HH:mm")
