@@ -1,6 +1,7 @@
 package com.ipurvey.gdstransformerservice.amadeus.collections;
 
 import lombok.Data;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +10,9 @@ import java.util.List;
 @Data
 @Document(collation = "pnr_data")
 public class PnrData extends BaseEntity {
+    @Version
+    private Long version;
+
     private List<PnrInfo> pnrData;
 
     private ProcessingStatus processingStatus=ProcessingStatus.PENDING;
