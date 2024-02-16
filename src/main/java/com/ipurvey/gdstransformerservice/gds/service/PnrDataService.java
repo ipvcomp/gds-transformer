@@ -3,8 +3,8 @@ package com.ipurvey.gdstransformerservice.gds.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ipurvey.gdstransformerservice.amadeus.client.AmadeusClientService;
 import com.ipurvey.gdstransformerservice.amadeus.collections.Pnr;
-import com.ipurvey.gdstransformerservice.amadeus.collections.PnrDataDto;
 import com.ipurvey.gdstransformerservice.amadeus.collections.PnrDto;
+import com.ipurvey.gdstransformerservice.amadeus.collections.ProcessingStatus;
 import com.ipurvey.gdstransformerservice.amadeus.repo.PnrDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,9 +25,7 @@ public class PnrDataService {
 
     public Pnr savePnrData(Pnr pnrData) {
         try{
-
             return pnrDataRepository.savePnrData(pnrData);
-
         }catch (Exception exception){
             exception.printStackTrace();
         }
@@ -40,6 +38,7 @@ public class PnrDataService {
             pnr.setContactInfo(newPnrData.getContactInfo());
             pnr.setPassengerInfo(newPnrData.getPassengerInfo());
             pnr.setFlightInfo(newPnrData.getFlightInfo());
+            pnr.setProcessingStatus(newPnrData.getProcessingStatus());
             return pnrDataRepository.savePnrData(newPnrData);
         }
         return pnr;
@@ -47,5 +46,13 @@ public class PnrDataService {
 
     public PnrDto getPnrByPnrNumber(String pnr) throws JsonProcessingException {
         return amadeusClientService.getPnrData(pnr);
+    }
+
+    public List<Pnr> findByStatus(ProcessingStatus processingStatus) {
+        return pnrDataRepository.findByStatus(processingStatus);
+    }
+
+    public void updateStatus(String id, Pnr pnr, ProcessingStatus processingStatus) {
+         pnrDataRepository.updateStatus(id,pnr,processingStatus);
     }
 }
