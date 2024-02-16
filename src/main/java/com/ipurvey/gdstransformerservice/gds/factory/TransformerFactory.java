@@ -1,10 +1,21 @@
 package com.ipurvey.gdstransformerservice.gds.factory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class TransformerFactory {
-    public static <T extends Transformer<?>> T  createTransformer(TransformerType type) {
+    private final GDSTransformer gdsTransformer;
+
+    @Autowired
+    public TransformerFactory(GDSTransformer gdsTransformer) {
+        this.gdsTransformer = gdsTransformer;
+    }
+
+    public <T extends Transformer<?>> T  createTransformer(TransformerType type) {
         switch (type) {
             case GDS:
-                return (T) new GDSTransformer();
+                return (T) gdsTransformer;
             default:
                 throw new IllegalArgumentException("Unsupported transformer type: " + type);
         }

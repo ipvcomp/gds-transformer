@@ -1,6 +1,6 @@
 package com.ipurvey.gdstransformerservice.amadeus.controller;
 
-import com.ipurvey.gdstransformerservice.amadeus.collections.PnrData;
+import com.ipurvey.gdstransformerservice.amadeus.collections.Pnr;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -9,17 +9,17 @@ public class PnrDataController {
 
 
     @PostMapping("/create")
-    public void createPnrData(@RequestBody PnrData pnrData) {
+    public void createPnrData(@RequestBody Pnr pnrData) {
         System.out.println("Received PNR data to create: " + pnrData);
     }
 
     @GetMapping("/get/{id}")
-    public PnrData getPnrData(@PathVariable String id) {
-        return new PnrData(null);
+    public Pnr getPnrData(@PathVariable String id) {
+        return null;
     }
 
     @PutMapping("/update/{id}")
-    public void updatePnrData(@PathVariable String id, @RequestBody PnrData updatedPnrData) {
+    public void updatePnrData(@PathVariable String id, @RequestBody Pnr updatedPnrData) {
         System.out.println("Received updated PNR data for ID " + id + ": " + updatedPnrData);
     }
 

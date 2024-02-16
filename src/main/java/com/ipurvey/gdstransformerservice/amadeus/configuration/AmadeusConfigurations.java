@@ -9,6 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AmadeusConfigurations {
 
     private int schedulerCronExpression;
+    private String baseUrl;
 
 
 }
