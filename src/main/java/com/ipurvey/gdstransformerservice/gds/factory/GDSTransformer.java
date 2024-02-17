@@ -27,9 +27,9 @@ import java.util.List;
 
 @Service
 public class GDSTransformer implements Transformer<Pnr> {
+    //TODO: add topic in OCH add configs here
     @Override
     public FlightBookingRequest transform(Pnr pnr) {
-//TODO: add checks
         FlightBookingRequest flightBookingRequest = new FlightBookingRequest();
         FlightInfo flightInfo = new FlightInfo();
 

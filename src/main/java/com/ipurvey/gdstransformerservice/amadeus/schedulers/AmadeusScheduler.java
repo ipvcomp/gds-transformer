@@ -37,31 +37,34 @@ public class AmadeusScheduler {
 
 
     @Scheduled(cron = "${amadeus.scheduler.cron.expression}")
-    @Transactional(rollbackFor = RuntimeException.class)
+    @Transactional(rollbackFor = {Exception.class })
     public void amadeusScheduler() throws JsonProcessingException {
         try{
             log.info("Getting Bookings from AMADEUS");
             List<Booking> bookings = bookingService.getBookings();
             log.info("Number of records received {}", bookings.size());
             for (Booking booking : bookings) {
-                Booking byBookingReference = bookingService.findByBookingReference(booking.getBookingRef());
-                if(byBookingReference!=null && StringUtils.hasText(byBookingReference.getId()) && !booking.getStatus().equalsIgnoreCase(byBookingReference.getStatus())){
-                    bookingService.updateBooking(byBookingReference.getBookingRef(), booking);
-                    update(booking);
-                }else{
-                    log.info("No booking found its a new booking {}", booking.getBookingRef());
-                    PnrDto pnrByPnrNumber = pnrDataService.getPnrByPnrNumber(booking.getPnr());
-                    if (pnrByPnrNumber!=null)
-                        pnrDataService.savePnrData(PnrMapper.map(pnrByPnrNumber,new Pnr()));
-                    bookingService.createBooking(booking);
-                }
+                processBooking(booking);
             }
-        }catch (RuntimeException exception){
-            exception.printStackTrace();
-            log.info("exception while processing records");
-
+        }catch (Exception exception){
+            log.error("exception while processing records",exception);
+            throw new RuntimeException(exception);
         }
 
+    }
+
+    private void processBooking(Booking booking) throws JsonProcessingException {
+        Booking byBookingReference = bookingService.findByBookingReference(booking.getBookingRef());
+        if(byBookingReference!=null && StringUtils.hasText(byBookingReference.getId()) && !booking.getStatus().equalsIgnoreCase(byBookingReference.getStatus())){
+            bookingService.updateBooking(byBookingReference.getBookingRef(), booking);
+            update(booking);
+        }else{
+            log.info("No booking found its a new booking {}", booking.getBookingRef());
+            PnrDto pnrByPnrNumber = pnrDataService.getPnrByPnrNumber(booking.getPnr());
+            if (pnrByPnrNumber!=null)
+                pnrDataService.savePnrData(PnrMapper.map(pnrByPnrNumber,new Pnr()));
+            bookingService.createBooking(booking);
+        }
     }
 
     private void update(Booking booking) throws JsonProcessingException {

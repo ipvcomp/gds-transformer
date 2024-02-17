@@ -43,7 +43,8 @@ public class PnrDataRepository {
 
     public List<Pnr> findByStatus(ProcessingStatus processingStatus) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("processingStatus").is(processingStatus));
+        query.addCriteria(Criteria.where("processingStatus").is(processingStatus))
+                .limit(10);
         return mongoTemplate.find(query, Pnr.class);
     }
 

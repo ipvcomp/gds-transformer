@@ -44,7 +44,7 @@ public class AmadeusClientServiceImpl implements AmadeusClientService {
         List<Booking> bookings = new ObjectMapper().disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES)
                 .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES).convertValue(bookingsResponse.getBody(), new TypeReference<List<Booking>>() {
         });
-        int windowSize = 3;
+        int windowSize = 1;
         int limit = bookings.size() - windowSize;
         Random random = new Random();
         int startingPoint = random.nextInt(limit + 1);
