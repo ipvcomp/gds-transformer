@@ -43,6 +43,7 @@ public class GDSTransformer implements Transformer<Pnr> {
         }
 
         flightInfo.setTravelMode("F");
+        flightInfo.setChannelId(6);
         flightBookingRequest.setFlightInfo(flightInfo);
 
         flightBookingRequest.setTransit(pnr.getFlightInfo().size() > 2);
