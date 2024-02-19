@@ -51,8 +51,6 @@ public class BookingServiceImpl implements BookingService {
             existingBooking.setChild(newBooking.getChild());
             existingBooking.setInfant(newBooking.getInfant());
             existingBooking.setFlightDate(newBooking.getFlightDate());
-            BeanUtils.copyProperties(newBooking, existingBooking);
-            existingBooking.setId(id);
             return bookingRepository.save(existingBooking);
 
         }
