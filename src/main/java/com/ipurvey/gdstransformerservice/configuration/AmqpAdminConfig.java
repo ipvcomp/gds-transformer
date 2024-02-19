@@ -15,7 +15,7 @@ import java.util.Map;
 public class AmqpAdminConfig {
     public static final String EXCHANGE_NAME = "gds_exchange";
     //convention ipurvey_sendingService_gdsName_receivingName_communicationType
-    public static final String GDS_AMADEUS_TO_OCH_QUEUE = "ipurvey.gds_tranformer_amadeus_och.oneway";
+    public static final String GDS_AMADEUS_TO_OCH_OUTGOING_QUEUE = "ipurvey.gds_tranformer_amadeus_och.queue";
     @Autowired
     private AmqpAdmin amqpAdmin;
     @Bean
@@ -24,13 +24,13 @@ public class AmqpAdminConfig {
     }
     @Bean
     Queue gdsAmadeusToOchQueue() {
-        return new Queue(GDS_AMADEUS_TO_OCH_QUEUE, true);
+        return new Queue(GDS_AMADEUS_TO_OCH_OUTGOING_QUEUE, true);
     }
 
 
     @Bean
     public Binding gdsAmadeusToOchQueueBinding(Exchange delayExchange) {
-        return BindingBuilder.bind(gdsAmadeusToOchQueue()).to(delayExchange).with(GDS_AMADEUS_TO_OCH_QUEUE).noargs();
+        return BindingBuilder.bind(gdsAmadeusToOchQueue()).to(delayExchange).with(GDS_AMADEUS_TO_OCH_OUTGOING_QUEUE).noargs();
     }
     @Bean
     public MessageConverter jsonMessageConverter() {

@@ -57,7 +57,7 @@ public class AmadeusGdsToOchScheduler {
             transformedFlightBookingRequests.add(flightBookingRequest);
             pnrDataService.updateStatus(pnr.getId(),pnr, ProcessingStatus.PROCESSED);
         }
-        producer.sendMessage(AmqpAdminConfig.GDS_AMADEUS_TO_OCH_QUEUE,transformedFlightBookingRequests);
+        producer.sendMessage(AmqpAdminConfig.GDS_AMADEUS_TO_OCH_OUTGOING_QUEUE,transformedFlightBookingRequests);
     }catch (Exception exception){
         log.error("exception while processing records",exception);
             throw  new RuntimeException(exception);
