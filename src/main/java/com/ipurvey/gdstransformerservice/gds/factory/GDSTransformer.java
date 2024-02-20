@@ -49,6 +49,7 @@ public class GDSTransformer implements Transformer<Pnr> {
         flightBookingRequest.setTransit(pnr.getFlightInfo().size() > 2);
 
         List<Journey> journeys = new ArrayList<>();
+        int legCounter = 1;
         for (FlightInfoDto f : pnr.getFlightInfo()) {
             if (f == null) continue;
             Journey journey = new Journey();
@@ -85,7 +86,9 @@ public class GDSTransformer implements Transformer<Pnr> {
             journey.setLegId(""+f.getLegId());
             journey.setDepartureDetails(departureDetails);
             journey.setArrivalDetails(arrivalDetails);
+            journey.setLegId(legCounter);
             journeys.add(journey);
+            legCounter++;
         }
         flightBookingRequest.setJourney(journeys);
 
@@ -103,6 +106,9 @@ public class GDSTransformer implements Transformer<Pnr> {
             passengerDetails.setPassengerNames(passengers);
         }
         flightBookingRequest.setPassengers(passengerDetails);
+
+
+
 
         return flightBookingRequest;
 
