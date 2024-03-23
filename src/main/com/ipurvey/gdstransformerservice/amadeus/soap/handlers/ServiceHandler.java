@@ -38,10 +38,8 @@ public class ServiceHandler {
 		Client client = ClientProxy.getClient(mPortType);
 		LoggingInInterceptor loggingInInterceptor = new LoggingInInterceptor();
 		loggingInInterceptor.setPrettyLogging(true);
-		LoggingOutInterceptor loggingOutInterceptor = new LoggingOutInterceptor();
-		loggingOutInterceptor.setPrettyLogging(true);
 		client.getInInterceptors().add(loggingInInterceptor);
-		client.getOutInterceptors().add(loggingOutInterceptor);
+		client.getOutInterceptors().add(loggingInInterceptor);
 		// Snippet of code to inject your own endpoint if you wish to target different endpoints
 		// depending on the amadeus config property file. The cleanest solution is to not define
 		// a custom endpoint address or WSAP and let the WSDL define these.
