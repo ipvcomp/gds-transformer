@@ -65,7 +65,7 @@ public static void RunExample() throws Exception {
 	// Stateless call
 	logger.info("Stateless call");
 	serviceHandler.fareMasterPricerTravelBoardSearchReply(SessionHandler.TransactionStatusCode.NONE, TransactionFlowLinkHandler.TransactionFlowLinkAction.NONE);
-//	serviceHandler.listPnrs(SessionHandler.TransactionStatusCode.NONE, TransactionFlowLinkHandler.TransactionFlowLinkAction.NONE);
+	serviceHandler.listPnrs(SessionHandler.TransactionStatusCode.NONE, TransactionFlowLinkHandler.TransactionFlowLinkAction.NONE);
 
 //		serviceHandler.airSellFromRecommendationReply(SessionHandler.TransactionStatusCode.NONE, TransactionFlowLinkHandler.TransactionFlowLinkAction.NONE);
 	logger.info("Done.");

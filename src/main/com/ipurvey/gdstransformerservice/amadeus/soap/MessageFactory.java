@@ -118,7 +118,6 @@ public class MessageFactory {
 		additionalBusinessSourceInformationTypeI.setSourceType(sourceTypeDetailsTypeI);
 		additionalBusinessSourceInformationTypeI.setOriginatorDetails(originatorIdentificationDetailsTypeI);
 		queueList.setTargetOffice(additionalBusinessSourceInformationTypeI);
-
 		QueueInformationTypeI queueInformationTypeI = new QueueInformationTypeI();
 		QueueInformationDetailsTypeI queueInformationDetailsTypeI = new QueueInformationDetailsTypeI();
 		queueInformationDetailsTypeI.setNumber(BigInteger.valueOf(12));
@@ -130,48 +129,48 @@ public class MessageFactory {
 		subQueueInformationDetailsTypeI.setIdentificationType("C");
 		subQueueInformationTypeI.setSubQueueInfoDetails(subQueueInformationDetailsTypeI);
 		queueList.setCategoryDetails(subQueueInformationTypeI);
-		List<QueueList.SearchCriteria> searchCriteria = new ArrayList<QueueList.SearchCriteria>();
-
-		SelectionDetailsInformationTypeI selectionDetailsInformationType = new SelectionDetailsInformationTypeI();
-		SelectionDetailsTypeI selectionDetailsTypeI = new SelectionDetailsTypeI();
-		selectionDetailsInformationType.setOption("TD");
-		selectionDetailsTypeI.setSelectionDetails(selectionDetailsInformationType);
-		QueueList.SearchCriteria searchCriteria1 = new QueueList.SearchCriteria();
-		searchCriteria1.setSearchOption(selectionDetailsTypeI);
-		StructuredPeriodInformationType structuredPeriodInformationType = new StructuredPeriodInformationType();
-		StructuredDateTimeType structuredDateTimeType = new StructuredDateTimeType();
-		structuredDateTimeType.setMonth(String.valueOf(4));
-		structuredDateTimeType.setDay(String.valueOf(20));
-		structuredDateTimeType.setYear(String.valueOf(2009));
-		structuredPeriodInformationType.setBeginDateTime(structuredDateTimeType);
-		StructuredDateTimeType structuredDateTimeType2 = new StructuredDateTimeType();
-		structuredDateTimeType2.setMonth(String.valueOf(4));
-		structuredDateTimeType2.setDay(String.valueOf(20));
-		structuredDateTimeType2.setYear(String.valueOf(2009));
-		structuredPeriodInformationType.setEndDateTime(structuredDateTimeType2);
-		searchCriteria1.getDates().add(structuredPeriodInformationType);
-
-
-		SelectionDetailsInformationTypeI selectionDetailsInformationType2 = new SelectionDetailsInformationTypeI();
-		SelectionDetailsTypeI selectionDetailsTypeI2 = new SelectionDetailsTypeI();
-		selectionDetailsInformationType.setOption("DD");
-		selectionDetailsTypeI2.setSelectionDetails(selectionDetailsInformationType2);
-		QueueList.SearchCriteria searchCriteria2 = new QueueList.SearchCriteria();
-		searchCriteria2.setSearchOption(selectionDetailsTypeI);
-		StructuredPeriodInformationType structuredPeriodInformationType3 = new StructuredPeriodInformationType();
-		StructuredDateTimeType structuredDateTimeType3 = new StructuredDateTimeType();
-		structuredDateTimeType3.setMonth(String.valueOf(4));
-		structuredDateTimeType3.setDay(String.valueOf(20));
-		structuredDateTimeType3.setYear(String.valueOf(2009));
-		structuredPeriodInformationType3.setBeginDateTime(structuredDateTimeType3);
-		StructuredDateTimeType structuredDateTimeType4 = new StructuredDateTimeType();
-		structuredDateTimeType4.setMonth(String.valueOf(4));
-		structuredDateTimeType4.setDay(String.valueOf(20));
-		structuredDateTimeType4.setYear(String.valueOf(2009));
-		structuredPeriodInformationType.setEndDateTime(structuredDateTimeType3);
-		searchCriteria2.getDates().add(structuredPeriodInformationType);
-		searchCriteria.add(searchCriteria1);
-		searchCriteria.add(searchCriteria2);
+//		List<QueueList.SearchCriteria> searchCriteria = new ArrayList<QueueList.SearchCriteria>();
+//
+//		SelectionDetailsInformationTypeI selectionDetailsInformationType = new SelectionDetailsInformationTypeI();
+//		SelectionDetailsTypeI selectionDetailsTypeI = new SelectionDetailsTypeI();
+//		selectionDetailsInformationType.setOption("TD");
+//		selectionDetailsTypeI.setSelectionDetails(selectionDetailsInformationType);
+//		QueueList.SearchCriteria searchCriteria1 = new QueueList.SearchCriteria();
+//		searchCriteria1.setSearchOption(selectionDetailsTypeI);
+//		StructuredPeriodInformationType structuredPeriodInformationType = new StructuredPeriodInformationType();
+//		StructuredDateTimeType structuredDateTimeType = new StructuredDateTimeType();
+//		structuredDateTimeType.setMonth(String.valueOf(4));
+//		structuredDateTimeType.setDay(String.valueOf(20));
+//		structuredDateTimeType.setYear(String.valueOf(2009));
+//		structuredPeriodInformationType.setBeginDateTime(structuredDateTimeType);
+//		StructuredDateTimeType structuredDateTimeType2 = new StructuredDateTimeType();
+//		structuredDateTimeType2.setMonth(String.valueOf(4));
+//		structuredDateTimeType2.setDay(String.valueOf(20));
+//		structuredDateTimeType2.setYear(String.valueOf(2009));
+//		structuredPeriodInformationType.setEndDateTime(structuredDateTimeType2);
+//		searchCriteria1.getDates().add(structuredPeriodInformationType);
+//
+//
+//		SelectionDetailsInformationTypeI selectionDetailsInformationType2 = new SelectionDetailsInformationTypeI();
+//		SelectionDetailsTypeI selectionDetailsTypeI2 = new SelectionDetailsTypeI();
+//		selectionDetailsInformationType.setOption("DD");
+//		selectionDetailsTypeI2.setSelectionDetails(selectionDetailsInformationType2);
+//		QueueList.SearchCriteria searchCriteria2 = new QueueList.SearchCriteria();
+//		searchCriteria2.setSearchOption(selectionDetailsTypeI);
+//		StructuredPeriodInformationType structuredPeriodInformationType3 = new StructuredPeriodInformationType();
+//		StructuredDateTimeType structuredDateTimeType3 = new StructuredDateTimeType();
+//		structuredDateTimeType3.setMonth(String.valueOf(4));
+//		structuredDateTimeType3.setDay(String.valueOf(20));
+//		structuredDateTimeType3.setYear(String.valueOf(2009));
+//		structuredPeriodInformationType3.setBeginDateTime(structuredDateTimeType3);
+//		StructuredDateTimeType structuredDateTimeType4 = new StructuredDateTimeType();
+//		structuredDateTimeType4.setMonth(String.valueOf(4));
+//		structuredDateTimeType4.setDay(String.valueOf(20));
+//		structuredDateTimeType4.setYear(String.valueOf(2009));
+//		structuredPeriodInformationType.setEndDateTime(structuredDateTimeType3);
+//		searchCriteria2.getDates().add(structuredPeriodInformationType);
+//		searchCriteria.add(searchCriteria1);
+//		searchCriteria.add(searchCriteria2);
 		return queueList;
 
 	}
