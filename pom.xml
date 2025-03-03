@@ -20,7 +20,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
-        <cxf.version>3.2.0</cxf.version>
+        <cxf.version>3.5.0</cxf.version>
         <wsdl.main.filepath>${basedir}/src/main/resources/wsdl/1ASIWIPUIPY_PDT_20240322_142116.wsdl</wsdl.main.filepath>
         <wsdl.custom.options.filepath>${basedir}/src/main/resources/custom.xml</wsdl.custom.options.filepath>
         <wsdl.filepath>${basedir}/wsdl/AmadeusWebServices.wsdl</wsdl.filepath>
@@ -57,7 +57,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.30</version>  <!-- Use the latest version -->
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -91,6 +92,18 @@
             <version>${cxf.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+
+        <!-- JAXB Implementation -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.3</version>
+        </dependency>
 
     </dependencies>
 
