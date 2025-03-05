@@ -13,6 +13,7 @@ public class PnrDataController {
         System.out.println("Received PNR data to create: " + pnrData);
     }
 
+
     @GetMapping("/get/{id}")
     public Pnr getPnrData(@PathVariable String id) {
         return null;
